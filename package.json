@@ -1,0 +1,47 @@
+{
+  "name": "google-cse-customization",
+  "version": "1.0.0",
+  "description": "Further customizations to the Custom Google Search Engine",
+  "scripts": {
+    "build": "webpack --config webpack.dev.js --mode development",
+    "dist": "webpack --config webpack.prod.js --mode production",
+    "watch": "webpack --config webpack.dev.js --mode development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merceruniversity/google-cse-customization.git"
+  },
+  "author": "Mercer University",
+  "contributors": [
+    "Todd Sayre"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/merceruniversity/google-cse-customization/issues"
+  },
+  "homepage": "https://github.com/merceruniversity/google-cse-customization#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.0",
+    "css-loader": "^2.1.1",
+    "debounce-promise": "^3.1.0",
+    "document-promises": "^4.0.0",
+    "element-ready": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "i": "^0.3.6",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "npm": "^6.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.6.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}

@@ -1,0 +1,56 @@
+@import 'colors';
+
+@font-face {
+  font-family: 'Gentona';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentona Medium'), local('Gentona-Medium');
+}
+
+@font-face {
+  font-family: 'Gentona';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Gentona Medium Italic'), local('Gentona-Medium-Italic');
+}
+
+@font-face {
+  font-family: 'Gentona';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentona Bold'), local('Gentona-Bold');
+}
+
+@font-face {
+  font-family: 'Gentona';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Gentona Bold Italic'), local('Gentona-Bold-Italic');
+}
+
+.gsc-control-cse {
+  font-family: 'Gentona' !important;
+  font-size: 10px !important;
+}
+
+.gsc-control-wrapper-cse {
+  font-size: 1.6rem !important;
+}
+
+.gsst_a .gscb_a {
+  color: #676767;
+
+  &:hover {
+    color: #222;
+  }
+}
+
+.gsc-input-box {
+  border: unset;
+
+  border-bottom: 2px solid var(--color-orange-500);
+}
+
+input.gsc-input {
+  border: 0 !important;
+}
