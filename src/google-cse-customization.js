@@ -44,6 +44,7 @@ const gcseCallBack = () => {
     const gscInput = await elementReady('input.gsc-input');
     // console.log(gscInput);
     gscInput.setAttribute('placeholder', 'Search');
+    gscInput.setAttribute('style', '');
     gscInputObserver.observe(gscInput, {
       attributes: true
     });

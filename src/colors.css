@@ -16,18 +16,22 @@
   --color-grey-20: #f5f5f5;
   /*  Made with Geenes | geenes.app  */
 
+  --color-red: #f9314a;
+
   /* Red color scale (Default = 600) */
   --color-red-900: #1b0508;
   --color-red-850: #370a10;
   --color-red-800: #771723;
   --color-red-750: #c12639;
-  --color-red-600: #F9314A;
+  --color-red-600: #f9314a;
   --color-red-500: #fa596d;
   --color-red-300: #fb7f8e;
   --color-red-200: #fca1ac;
   --color-red-80: #fdc6cd;
   --color-red-20: #feecee;
   /*  Made with Geenes | geenes.app  */
+
+  --color-orange: #f76800;
 
   /* Orange color scale (Default = 500) */
   --color-orange-900: #1b0b00;
@@ -42,6 +46,8 @@
   --color-orange-20: #fef1e7;
   /*  Made with Geenes | geenes.app  */
 
+  --color-green: #6db644;
+
   /* Red color scale (Default = 300) */
   --color-green-900: #0c1407;
   --color-green-850: #18280f;
@@ -54,6 +60,8 @@
   --color-green-50: #d7ebcc;
   --color-green-20: #f1f8ee;
   /*  Made with Geenes | geenes.app  */
+
+  --color-blue: #2297d0;
 
   /* Blue color scale (Default = 400) */
   --color-blue-900: #031017;
@@ -68,16 +76,21 @@
   --color-blue-20: #eaf5fa;
   /*  Made with Geenes | geenes.app  */
 
+  --color-purple: #8850f8;
+
   /* Purple color scale (Default = 600) */
   --color-purple-900: #0f081b;
   --color-purple-850: #1e1136;
   --color-purple-800: #412676;
   --color-purple-700: #693dc0;
-  --color-purple-600: #8850F8;
+  --color-purple-600: #8850f8;
   --color-purple-400: #9e71f8;
   --color-purple-300: #b491fa;
   --color-purple-100: #c8affb;
   --color-purple-80: #decffc;
   --color-purple-20: #f4effe;
   /*  Made with Geenes | geenes.app  */
+
+  /* Nonce colors */
+  --color-blue-darker-for-nav-menu: #0e89c6;
 }

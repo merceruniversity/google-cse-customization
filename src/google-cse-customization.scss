@@ -6,19 +6,20 @@
 @import 'colors.css';
 
 .gsc-control-cse {
-  // Clear search button
-  --clear-search-button-background-color: var(--color-grey-100);
-  --clear-search-button-color: var(--color-grey-20);
-  --clear-search-button-transition-timing-function: linear;
-  --clear-search-button-transition-timing-function-haf: cubic-bezier(0.000, 1.000, 0.500, 4);
-  --clear-search-button-transition-time: 850ms;
+  // Mathematical constants
+  --SQRT2: 1.4142135623730951;
 
-  --sort-by-menu-selected-item-background-color: #0e89c6;
-  --sort-by-menu-selected-item-color: var(--color-white);
-  --sort-by-menu-background-color: var(--color-blue-400);
-  --sort-by-menu-color: var(--color-white);
+  // "Clear search box" button
+  // easeOutCubic (https://matthewlein.com/tools/ceaser)
+  --circle-button-transition-timing-function-on-blur: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  // easeOutBack, modified (https://matthewlein.com/tools/ceaser)
+  --circle-button-transition-timing-function-on-focus: cubic-bezier(0.000, 1.000, 0.500, 4);
+  --circle-button-transition-time-on-blur: 100ms;
+  --circle-button-transition-time-on-focus: 850ms;
 
   box-sizing: border-box;
+  font-family: 'Gentona', sans-serif;
+  font-size: 18px;
 
   &::before,
   &::after,
@@ -27,301 +28,301 @@
   *::after {
     box-sizing: inherit;
   }
-}
 
-/*
+  // Search Field =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-.########..#######..##....##.########..######.
-.##.......##.....##.###...##....##....##....##
-.##.......##.....##.####..##....##....##......
-.######...##.....##.##.##.##....##.....######.
-.##.......##.....##.##..####....##..........##
-.##.......##.....##.##...###....##....##....##
-.##........#######..##....##....##.....######.
-
-*/
-
-.gsc-control-cse,
-.gsc-control-cse .gsc-table-result {
-  font-family: 'Gentona', sans-serif;
-  font-size: 18px;
-}
-
-input.gsc-input {
-  font-size: 32px;
-}
-
-.gsc-control-cse .gs-spelling,
-.gsc-control-cse .gs-result .gs-title,
-.gsc-control-cse .gs-result .gs-title * {
-  font-size: 24px;
-}
-
-.gsc-selected-option-container {
-  font-size: 16px;
-}
-
-/*
-
-..######..##.....##.########...######...#######..########.
-.##....##.##.....##.##.....##.##....##.##.....##.##.....##
-.##.......##.....##.##.....##.##.......##.....##.##.....##
-.##.......##.....##.########...######..##.....##.########.
-.##.......##.....##.##...##.........##.##.....##.##...##..
-.##....##.##.....##.##....##..##....##.##.....##.##....##.
-..######...#######..##.....##..######...#######..##.....##
-
-*/
-
-.cse .gsc-search-button-v2,
-.gsc-search-button-v2,
-.gsc-selected-option-container {
-  cursor: pointer;
-}
-
-/*
-
-..######...#######..##........#######..########...######.
-.##....##.##.....##.##.......##.....##.##.....##.##....##
-.##.......##.....##.##.......##.....##.##.....##.##......
-.##.......##.....##.##.......##.....##.########...######.
-.##.......##.....##.##.......##.....##.##...##.........##
-.##....##.##.....##.##.......##.....##.##....##..##....##
-..######...#######..########..#######..##.....##..######.
-
-*/
-
-// Search button
-.cse .gsc-search-button-v2,
-.gsc-search-button-v2 {
-  background-color: unset;
-  border: 2px solid var(--color-orange-500);
-  position: relative;
-
-  &:hover {
-    border: 2px solid var(--color-orange-500);
-    background-color: unset;
-    background-image: unset;
-    filter: unset;
-  }
-}
-
-// Search menu icon
-.gsc-search-button-v2 svg {
-  fill: var(--color-black);
-}
-
-// Sort by selected option
-.gsc-selected-option-container {
-  border: unset;
-  border-radius: unset;
-  box-shadow: unset;
-  background-color: var(--sort-by-menu-selected-item-background-color);
-}
-
-// Sort by menu
-.gsc-selected-option {
-  color: var(--sort-by-menu-selected-item-color);
-}
-
-// Sort by menu
-.gsc-control-cse .gsc-option-menu {
-  box-shadow: unset;
-  background: var(--sort-by-menu-background-color);
-}
-
-.gsc-option-menu-item-highlighted {
-  background-color: var(--sort-by-menu-selected-item-background-color);
-  color: var(--color-white);
-}
-
-// "Sort by" menu unselected option text
-.gsc-option-menu-item {
-  color: var(--sort-by-menu-color);
-}
-
-// Search promotions background
-.cse .gsc-webResult.gsc-result.gsc-promotion,
-.gsc-webResult.gsc-result.gsc-promotion {
-  background-color: var(--color-grey-700);
-}
-
-// Search promotions title
-.gsc-result.gsc-promotion a.gs-title:link,
-.gsc-result.gsc-promotion a.gs-title:link * {
-  color: var(--color-blue-50);
-}
-
-// Search promotions URL
-.gsc-result.gsc-promotion a.gs-visibleUrl,
-.gsc-result.gsc-promotion .gs-visibleUrl {
-  color: var(--color-green-50);
-}
-
-// Search promotions snippet
-.gsc-result.gsc-promotion .gs-snippet {
-  color: var(--color-grey-20);
-}
-
-// Results title
-.gsc-result .gs-title,
-.gsc-result .gs-title * {
-  color: var(--color-blue-600);
-}
-
-// Results URL
-.gsc-result a.gs-visibleUrl,
-.gsc-result .gs-visibleUrl {
-  color: var(--color-green-700);
-}
-
-// Results snippet
-.gsc-preview-reviews,
-.gsc-control-cse .gs-snippet {
-  color: var(--color-grey-700);
-}
-
-// "About X results (y seconds)"
-.gsc-result-info {
-  color: var(--color-grey-600);
-}
-
-/*
-
-..######..##.....##....###....##....##..######...########..######.
-.##....##.##.....##...##.##...###...##.##....##..##.......##....##
-.##.......##.....##..##...##..####..##.##........##.......##......
-.##.......#########.##.....##.##.##.##.##...####.######....######.
-.##.......##.....##.#########.##..####.##....##..##.............##
-.##....##.##.....##.##.....##.##...###.##....##..##.......##....##
-..######..##.....##.##.....##.##....##..######...########..######.
-
-*/
-
-// Search field takes up all availabe space
-table.gsc-search-box td {
-  width: 100%;
-}
-
-// Search button matches other buttons on the site
-button.gsc-search-button {
-  position: relative;
-
-  &::before {
-    background-color: var(--color-orange-500);
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
+  // Search field takes up all availabe space
+  table.gsc-search-box td {
     width: 100%;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1;
   }
 
-  svg {
-    --size: 15px;
+  .gsc-input-box {
+    border: unset;
+    border-bottom: 2px solid var(--color-orange);
+  }
 
-    fill: var(--color-black);
+  input.gsc-input {
+    border: unset;
+    font-size: 32px;
+    padding: unset;
+  }
+
+  // "Clear search box" Button  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gsst_a {
+    --size: 24px;
+
+    align-content: center;
+    display: grid;
     height: var(--size);
-    position: relative;
+    justify-content: center;
+    text-decoration: none;
     width: var(--size);
-    z-index: 2;
+
+    &::before,
+    &::after {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &::before {
+      align-content: center;
+      color: var(--color-grey-20);
+      content: '✕';
+      display: grid;
+      font-size: 16px;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      background-color: var(--color-grey-100);
+      border-radius: 50%;
+      display: block;
+      height: var(--size);
+      transform: scale(1);
+      transition: transform var(--circle-button-transition-time-on-focus) 100ms;
+      width: var(--size);
+      z-index: 1;
+    }
+
+    &:active::after,
+    &:focus::after,
+    &:hover::after {
+      transition: transform var(--circle-button-transition-time-on-focus) var(--circle-button-transition-timing-function-on-focus);
+      transform: scale(1.2);
+    }
   }
 
-  &:hover {
+  // The original "x"
+  .gscb_a {
+    // Hide the clear search results "x"
+    display: none;
+    padding: 0;
+  }
+
+  // Search Button =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+  // Search button matches other buttons on the site
+  button.gsc-search-button {
+    background-color: unset;
+    border: 2px solid var(--color-orange);
+    cursor: pointer;
+    position: relative;
+
     &::before {
-      transform: scaleX(1);
+      background-color: var(--color-orange);
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease-in-out;
+      z-index: 1;
     }
 
     svg {
-      fill: var(--color-white);
+      --size: 15px;
+
+      fill: var(--color-black);
+      height: var(--size);
+      position: relative;
+      width: var(--size);
+      z-index: 2;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      &::before {
+        transform: scaleX(1);
+      }
+
+      svg {
+        fill: var(--color-white);
+      }
     }
   }
-}
 
-// Sort by menu disclosure icon
-.gsc-option-selector {
-  background: unset;
-  display: grid;
-  justify-content: center;
-  align-content: center;
+  button.gsc-search-button {
 
-  &::before {
-    content: '';
-    border-bottom: 2px solid var(--color-white);
-    border-right: 2px solid var(--color-white);
-    height: 6px;
-    transform: rotate(50grad);
-    width: 6px;
-  }
-}
 
-input.gsc-input {
-  border: unset;
-  padding: unset;
-}
+    // &:active,
+    // &:focus,
+    // &:hover {
+    //   background-color: unset;
+    //   background-image: unset;
+    //   border: 2px solid var(--color-orange);
+    //   filter: unset;
+    // }
 
-.gsc-input-box {
-  border: unset;
-  border-bottom: 2px solid var(--color-orange-500);
-}
-
-//
-.gsib_a {
-  padding: 0;
-}
-
-// Hide the clear search results "x"
-.gscb_a {
-  display: none;
-}
-
-// Add a better clear search results "x"
-.gsst_a {
-  --size: 24px;
-
-  align-content: center;
-  display: grid;
-  height: var(--size);
-  justify-content: center;
-  text-decoration: none;
-  width: var(--size);
-
-  &::before,
-  &::after {
-    grid-column: 1;
-    grid-row: 1;
+    svg {
+      fill: var(--color-black);
+    }
   }
 
-  &::before {
-    align-content: center;
-    color: var(--clear-search-button-color);
-    content: '✕';
-    display: grid;
+  // "About x results (y seconds)" =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+  .gsc-result-info {
+    color: var(--color-grey-600);
+  }
+
+  // "Sort by" Menu =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gsc-selected-option-container {
+    cursor: pointer;
     font-size: 16px;
+    border: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    padding: 0 40px 0 10px;
+    background-color: var(--color-blue-darker-for-nav-menu);
+  }
+
+  .gsc-option-selector {
+    align-content: center;
+    background: unset;
+    display: grid;
+    padding: 0 10px 3px 5px;
     justify-content: center;
-    z-index: 2;
+
+    &::before {
+      --size: 8px;
+
+      content: '';
+      border-bottom: 3px solid var(--color-white);
+      border-right: 3px solid var(--color-white);
+      height: var(--size);
+      transform: rotate(50grad);
+      width: var(--size);
+    }
   }
 
-  &::after {
-    content: '';
-    background-color: var(--clear-search-button-background-color);
-    border-radius: 50%;
-    display: block;
-    height: var(--size);
-    transform: scale(1);
-    transition: transform var(--clear-search-button-transition-time) 100ms;
-    width: var(--size);
-    z-index: 1;
+  .gsc-option-menu {
+    box-shadow: unset;
+    background: var(--color-blue);
   }
 
-  &:active::after,
-  &:focus::after,
-  &:hover::after {
-    transition: transform var(--clear-search-button-transition-time) var(--clear-search-button-transition-timing-function-haf);
-    transform: scale(1.2);
+  .gsc-option-menu-item {
+    color: var(--color-white);
   }
+
+  .gsc-selected-option {
+    color: var(--color-white);
+  }
+
+  .gsc-option-menu-item-highlighted {
+    background-color: var(--color-blue-darker-for-nav-menu);
+    color: var(--color-white);
+  }
+
+  // Spelling =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gs-spelling {
+    font-size: 24px;
+  }
+
+  // Search Promotions =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+  // Search promotions background
+  .gsc-result.gsc-promotion {
+    background-color: var(--color-grey-700);
+
+    // Search promotions title
+    .gs-title,
+    .gs-title * {
+      color: var(--color-blue-50);
+      font-size: 24px;
+    }
+
+    // Search promotions URL
+    .gs-visibleUrl {
+      color: var(--color-green-50);
+    }
+
+    .gs-promotion-image {
+      border: 1px solid var(--color-grey-20);
+    }
+
+    // Search promotions snippet
+    .gs-snippet {
+      color: var(--color-grey-20);
+    }
+  }
+
+  // Search Results =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gsc-result:not(.gsc-promotion) .gs-result {
+
+    // Results title
+    .gs-title,
+    .gs-title * {
+      color: var(--color-blue);
+      font-size: 24px;
+    }
+
+    // Results URL
+    .gs-visibleUrl {
+      color: var(--color-green-700);
+    }
+
+    // Results snippet
+    .gsc-preview-reviews,
+    .gs-snippet {
+      color: var(--color-grey-700);
+    }
+
+  }
+
+  // Pagination =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gsc-results .gsc-cursor-box {
+    --size: 40px;
+
+    .gsc-cursor-page {
+      align-content: center;
+      color: var(--color-white);
+      cursor: pointer;
+      display: inline-grid;
+      font-size: 16px;
+      height: var(--size);
+      justify-content: center;
+      position: relative;
+      text-decoration: none;
+      width: var(--size);
+      z-index: 1;
+
+      &::after {
+        background-color: var(--color-grey-800);
+        content: '';
+        display: block;
+        height: calc(var(--size) / var(--SQRT2));
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(50grad) scale(1);
+        transition: transform var(--circle-button-transition-time-on-focus) var(--circle-button-transition-time-on-blur);
+        width: calc(var(--size) / var(--SQRT2));
+        z-index: -1;
+      }
+
+      &:active::after,
+      &:focus::after,
+      &:hover::after {
+        transition: transform var(--circle-button-transition-time-on-focus) var(--circle-button-transition-timing-function-on-focus);
+        transform: translate(-50%, -50%) rotate(50grad) scale(1.2);
+      }
+    }
+
+    .gsc-cursor-current-page {
+      &::after {
+        background-color: var(--color-orange);
+      }
+    }
+  }
+
 }
