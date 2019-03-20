@@ -5,6 +5,16 @@
 // Styles for customization
 @import 'colors.css';
 
+// Here are selectors that need to be exact to override specificity
+
+.gsc-control-cse,
+.gsc-control-cse .gsc-table-result {
+  font-family: 'Gentona', sans-serif;
+  font-size: 18px;
+}
+
+//
+
 .gsc-control-cse {
   // Mathematical constants
   --SQRT2: 1.4142135623730951;
@@ -18,8 +28,6 @@
   --circle-button-transition-time-on-focus: 850ms;
 
   box-sizing: border-box;
-  font-family: 'Gentona', sans-serif;
-  font-size: 18px;
 
   &::before,
   &::after,
@@ -233,24 +241,34 @@
     background-color: var(--color-grey-700);
 
     // Search promotions title
-    .gs-title,
-    .gs-title * {
-      color: var(--color-blue-50);
+    div.gs-title,
+    div.gs-title * {
       font-size: 24px;
+      text-decoration: none;
+    }
+
+    a.gs-title,
+    a.gs-title * {
+      border-bottom: 2px solid var(--color-orange);
+      color: var(--color-white);
+      display: inline-block;
+      padding: 0 0 2px;
     }
 
     // Search promotions URL
     .gs-visibleUrl {
-      color: var(--color-green-50);
+      color: var(--color-grey-80);
+      font-size: 16px;
     }
 
     .gs-promotion-image {
-      border: 1px solid var(--color-grey-20);
+      border: 1px solid var(--color-white);
     }
 
     // Search promotions snippet
     .gs-snippet {
       color: var(--color-grey-20);
+      font-size: 18px;
     }
   }
 
@@ -259,21 +277,31 @@
   .gsc-result:not(.gsc-promotion) .gs-result {
 
     // Results title
-    .gs-title,
-    .gs-title * {
-      color: var(--color-blue);
+    div.gs-title,
+    div.gs-title * {
       font-size: 24px;
+      text-decoration: none;
+    }
+
+    a.gs-title,
+    a.gs-title * {
+      border-bottom: 2px solid var(--color-orange);
+      display: inline-block;
+      color: var(--color-black);
+      padding: 0 0 2px;
     }
 
     // Results URL
     .gs-visibleUrl {
-      color: var(--color-green-700);
+      color: var(--color-grey-600);
+      font-size: 16px;
     }
 
     // Results snippet
     .gsc-preview-reviews,
     .gs-snippet {
-      color: var(--color-grey-700);
+      color: var(--color-black);
+      font-size: 18px;
     }
 
   }
@@ -281,48 +309,40 @@
   // Pagination =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
   .gsc-results .gsc-cursor-box {
-    --size: 40px;
+
+    .gsc-cursor-page,
+    .gsc-cursor-current-page {
+      &:hover {
+        text-decoration: none;
+      }
+    }
 
     .gsc-cursor-page {
-      align-content: center;
-      color: var(--color-white);
-      cursor: pointer;
-      display: inline-grid;
-      font-size: 16px;
-      height: var(--size);
-      justify-content: center;
-      position: relative;
-      text-decoration: none;
-      width: var(--size);
-      z-index: 1;
-
-      &::after {
-        background-color: var(--color-grey-800);
-        content: '';
-        display: block;
-        height: calc(var(--size) / var(--SQRT2));
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(50grad) scale(1);
-        transition: transform var(--circle-button-transition-time-on-focus) var(--circle-button-transition-time-on-blur);
-        width: calc(var(--size) / var(--SQRT2));
-        z-index: -1;
-      }
-
-      &:active::after,
-      &:focus::after,
-      &:hover::after {
-        transition: transform var(--circle-button-transition-time-on-focus) var(--circle-button-transition-timing-function-on-focus);
-        transform: translate(-50%, -50%) rotate(50grad) scale(1.2);
-      }
+      border-bottom: 2px solid var(--color-orange);
+      padding: 0 0 2px;
+      margin-right: 10px;
     }
 
     .gsc-cursor-current-page {
-      &::after {
-        background-color: var(--color-orange);
-      }
+      border-bottom: none;
+      color: var(--color-orange);
     }
+  }
+
+  // Footer =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gcsc-more-maybe-branding-root {
+
+    .gcsc-find-more-on-google {
+      border-bottom: 2px solid var(--color-orange);
+      color: var(--color-black);
+      padding: 0 0 2px;
+    }
+
+    .gcsc-find-more-on-google-magnifier {
+      fill: var(--color-black);
+    }
+
   }
 
 }

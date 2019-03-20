@@ -2,6 +2,9 @@ const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const buildDirPath = path.join(__dirname, '/build');
 
@@ -9,7 +12,7 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
 
   entry: {
-    index: './src/google-cse-customization.js'
+    index: './src/index.js'
   },
 
   output: {
@@ -23,7 +26,14 @@ module.exports = {
     // Extract CSS into dedicated file
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    })
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Google Custom Search Engine',
+      template: 'src/index.hbs',
+      // inlineSource: '.(js|css)$'
+    }),
+    // new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackHarddiskPlugin()
   ],
 
   module: {

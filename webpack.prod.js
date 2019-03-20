@@ -8,7 +8,7 @@ const buildDirPath = path.join(__dirname, '/build');
 
 module.exports = {
   entry: {
-    index: './src/google-cse-customization.js'
+    index: './src/index.js'
   },
 
   output: {
@@ -72,9 +72,5 @@ module.exports = {
         ]
       }
     ]
-  },
-
-  watchOptions: {
-    ignored: ['node_modules', 'build']
   }
 };
