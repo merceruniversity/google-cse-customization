@@ -2,6 +2,8 @@ const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const buildDirPath = path.join(__dirname, '/build');
@@ -23,6 +25,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
+    new HtmlWebpackPlugin({
+      title: 'Google Custom Search Engine',
+      template: 'src/index.hbs',
+      // inlineSource: '.(js|css)$'
+    }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/ig,
       cssProcessor: require('cssnano'),
@@ -34,7 +41,8 @@ module.exports = {
         }],
       },
       canPrint: true
-    })
+    }),
+    new HtmlWebpackHarddiskPlugin()
   ],
 
   module: {
