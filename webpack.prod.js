@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const WebpackAutoInject = require('webpack-auto-inject-version');
 
 const buildDirPath = path.join(__dirname, '/build');
 
@@ -20,7 +19,6 @@ module.exports = {
   },
 
   plugins: [
-    new WebpackAutoInject(),
     // Remove various build dirs
     new CleanWebpackPlugin(),
     // Extract CSS into dedicated file
