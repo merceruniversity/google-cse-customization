@@ -1,6 +1,6 @@
 {
   "name": "google-cse-customization",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Further customizations to the Custom Google Search Engine",
   "scripts": {
     "build": "webpack --config webpack.dev.js --mode development",
