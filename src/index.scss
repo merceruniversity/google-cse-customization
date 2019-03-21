@@ -253,8 +253,18 @@
 
     // Search promotions URL
     .gs-visibleUrl {
-      color: var(--color-grey-80);
-      font-size: 16px;
+      color: var(--color-grey-100);
+      font-size: 14px;
+      font-style: italic;
+      text-transform: lowercase;
+    }
+
+    .gs-visibleUrl-short {
+      display: inline-block;
+    }
+
+    .gs-visibleUrl-long {
+      display: none;
     }
 
     .gs-promotion-image {
@@ -292,14 +302,24 @@
 
     // Results URL
     .gs-visibleUrl {
-      color: var(--color-grey-600);
-      font-size: 16px;
+      color: var(--color-grey-400);
+      font-size: 14px;
+      font-style: italic;
+      text-transform: lowercase;
+    }
+
+    .gs-visibleUrl-short {
+      display: inline-block;
+    }
+
+    .gs-visibleUrl-long {
+      display: none;
     }
 
     // Results snippet
     .gsc-preview-reviews,
     .gs-snippet {
-      color: var(--color-black);
+      color: var(--color-grey-600);
       font-size: 18px;
     }
 
