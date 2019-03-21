@@ -237,14 +237,13 @@
     div.gs-title * {
       font-size: 24px;
       height: auto;
-      line-height: 1.2;
+      line-height: 1.3;
       text-decoration: none;
     }
 
     a.gs-title,
     a.gs-title * {
       color: var(--color-white);
-      display: inline-block;
       height: auto;
     }
 
@@ -257,7 +256,6 @@
       color: var(--color-grey-100);
       font-size: 14px;
       font-style: italic;
-      margin: -2px 0 2px;
       text-transform: lowercase;
     }
 
@@ -277,7 +275,7 @@
     .gs-snippet {
       color: var(--color-grey-20);
       font-size: 18px;
-      line-height: 1.1;
+      line-height: 1.2;
     }
   }
 
@@ -290,22 +288,18 @@
     div.gs-title * {
       font-size: 24px;
       height: auto;
-      line-height: 1.2;
+      line-height: 1.3;
       text-decoration: none;
     }
 
     a.gs-title,
     a.gs-title * {
-      display: inline-block;
       color: var(--color-black);
     }
 
     a.gs-title {
       border-bottom: 2px solid var(--color-orange);
-    }
-
-    .gsc-url-top {
-      margin: -2px 0 2px;
+      position: relative;
     }
 
     // Results URL
@@ -329,7 +323,7 @@
     .gs-snippet {
       color: var(--color-grey-600);
       font-size: 18px;
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
   }
