@@ -53,6 +53,7 @@
     border: unset;
     box-shadow: unset;
     font-size: 32px;
+    margin: unset;
     padding: unset;
   }
 
@@ -159,16 +160,6 @@
 
   button.gsc-search-button {
 
-
-    // &:active,
-    // &:focus,
-    // &:hover {
-    //   background-color: unset;
-    //   background-image: unset;
-    //   border: 2px solid var(--color-orange);
-    //   filter: unset;
-    // }
-
     svg {
       fill: var(--color-black);
     }
@@ -245,15 +236,19 @@
     div.gs-title,
     div.gs-title * {
       font-size: 24px;
+      height: auto;
       text-decoration: none;
     }
 
     a.gs-title,
     a.gs-title * {
-      border-bottom: 2px solid var(--color-orange);
       color: var(--color-white);
       display: inline-block;
-      padding: 0 0 2px;
+      height: auto;
+    }
+
+    a.gs-title {
+      border-bottom: 2px solid var(--color-orange);
     }
 
     // Search promotions URL
@@ -281,15 +276,18 @@
     div.gs-title,
     div.gs-title * {
       font-size: 24px;
+      height: auto;
       text-decoration: none;
     }
 
     a.gs-title,
     a.gs-title * {
-      border-bottom: 2px solid var(--color-orange);
       display: inline-block;
       color: var(--color-black);
-      padding: 0 0 2px;
+    }
+
+    a.gs-title {
+      border-bottom: 2px solid var(--color-orange);
     }
 
     // Results URL
