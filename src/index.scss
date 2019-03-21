@@ -237,6 +237,7 @@
     div.gs-title * {
       font-size: 24px;
       height: auto;
+      line-height: 1.2;
       text-decoration: none;
     }
 
@@ -256,11 +257,12 @@
       color: var(--color-grey-100);
       font-size: 14px;
       font-style: italic;
+      margin: -2px 0 2px;
       text-transform: lowercase;
     }
 
     .gs-visibleUrl-short {
-      display: inline-block;
+      display: block;
     }
 
     .gs-visibleUrl-long {
@@ -275,6 +277,7 @@
     .gs-snippet {
       color: var(--color-grey-20);
       font-size: 18px;
+      line-height: 1.1;
     }
   }
 
@@ -287,6 +290,7 @@
     div.gs-title * {
       font-size: 24px;
       height: auto;
+      line-height: 1.2;
       text-decoration: none;
     }
 
@@ -300,6 +304,10 @@
       border-bottom: 2px solid var(--color-orange);
     }
 
+    .gsc-url-top {
+      margin: -2px 0 2px;
+    }
+
     // Results URL
     .gs-visibleUrl {
       color: var(--color-grey-400);
@@ -309,7 +317,7 @@
     }
 
     .gs-visibleUrl-short {
-      display: inline-block;
+      display: block;
     }
 
     .gs-visibleUrl-long {
@@ -321,6 +329,7 @@
     .gs-snippet {
       color: var(--color-grey-600);
       font-size: 18px;
+      line-height: 1.1;
     }
 
   }
