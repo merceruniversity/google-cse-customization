@@ -1,11 +1,10 @@
-const path = require('path');
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const Path = require('path');
 
-const buildDirPath = path.join(__dirname, '/build');
+const buildDirPath = Path.join(__dirname, '/build');
 
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
@@ -20,27 +19,21 @@ module.exports = {
   },
 
   plugins: [
-    // Remove various build dirs
     new CleanWebpackPlugin(),
-    // Extract CSS into dedicated file
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
+    new Dotenv({
+      path: '.env.development'
     }),
     new HtmlWebpackPlugin({
       title: 'Google Custom Search Engine',
       template: 'src/index.hbs',
-      // inlineSource: '.(js|css)$'
     }),
-    // new HtmlWebpackInlineSourcePlugin(),
     new HtmlWebpackHarddiskPlugin()
   ],
 
   module: {
     rules: [{
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
+        use: [{
             loader: 'css-loader',
             options: {
               importLoaders: 1
@@ -57,9 +50,7 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
+        use: [{
             loader: 'css-loader',
             options: {
               importLoaders: 1
