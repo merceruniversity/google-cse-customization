@@ -38,49 +38,80 @@ class GoogleSearch {
       cx: options.cx,
     };
 
-    // this.isGapiLoaded = false;
-    // this.isClientLoaded = false;
+    this.isApiLoaded = false;
+    this.isClientLoaded = false;
 
     return this
   }
 
+  // init() {
+  //   return loadJS([{
+  //     url: 'https://apis.google.com/js/api.js'
+  //   }]).then(() => {
+  //     console.log('GAPI loaded');
+  //     // this.isGapiLoaded = true;
+  //     return new Promise((resolve) => {
+  //       gapi.load('client', () => {
+  //         console.log('API key set');
+  //         gapi.client.setApiKey(this.config.key);
+  //         resolve(gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
+  //           .then(() => {
+  //             console.log('Client loaded');
+  //             // this.isClientLoaded = true;
+  //           }));
+  //       });
+  //     });
+  //   });
+  // }
+
   init() {
-    return loadJS([{
-      url: 'https://apis.google.com/js/api.js'
-    }]).then(() => {
-      console.log('GAPI loaded');
-      // this.isGapiLoaded = true;
-      return new Promise((resolve) => {
-        gapi.load('client', () => {
-          console.log('API key set');
-          gapi.client.setApiKey(this.config.key);
-          resolve(gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
-            .then(() => {
-              console.log('Client loaded');
-              // this.isClientLoaded = true;
-            }));
+    return new Promise(resolve => {
+        console.log(this.isApiLoaded);
+        loadJS([{
+          url: 'https://apis.google.com/js/api.js'
+        }]).then(() => resolve(true));
+      })
+      .then(() => {
+        return new Promise(resolve => {
+          console.log('API loaded');
+          resolve(this.isApiLoaded = true);
+        })
+      })
+      .then(() => {
+        return new Promise(resolve => {
+          gapi.load('client', () => {
+            console.log('API key set');
+            resolve(gapi.client.setApiKey(this.config.key));
+          });
         });
-      });
-    });
+      })
+      .then(() => {
+        return gapi.client.load('https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest');
+      })
+      .then(console.log('Client loaded'));
   }
 
   fetchResults(q) {
-    this.init().then(() => {
-      return gapi.client.search.cse
-        .list({
-          q,
-          cx: this.config.cx
-        })
-        .then(
-          response => {
-            // Handle the results here (response.result has the parsed body).
-            console.log('Response', response);
-            return response;
-          },
-          err => {
-            console.error('Execute error', err);
-          }
-        );
+    return new Promise(resolve => {
+      this.init().then(() => {
+        console.log(q);
+        //   gapi.client.search.cse
+        //     .list({
+        //       q,
+        //       cx: this.config.cx
+        //     })
+        //     .then(
+        //       response => {
+        //         // Handle the results here (response.result has the parsed body).
+        //         // console.log('Response', response);
+        //         resolve(response);
+        //       },
+        //       err => {
+        //         console.error('Execute error', err);
+        //       }
+        //     );
+        // });
+      });
     });
   }
 
