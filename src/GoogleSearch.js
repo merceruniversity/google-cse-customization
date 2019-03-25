@@ -30,77 +30,58 @@
 // <button onclick="execute()">execute</button>
 
 import loadJS from 'load-js';
-import PQueue from 'p-queue';
 
 class GoogleSearch {
   constructor(options) {
     this.config = {
       key: options.key,
-      cx: options.cx
+      cx: options.cx,
     };
 
-    return this;
+    // this.isGapiLoaded = false;
+    // this.isClientLoaded = false;
+
+    return this
   }
 
   init() {
-    // console.log('Initing');
-
-    // const queue = new PQueue({
-    //   concurrency: 1
-    // });
-
-    // queue.addAll([
-    //   this.loadGapi(),
-    //   this.loadGapiClient(),
-    //   this.loadCustomSearch()
-    // ]);
-
-    loadJS([{
-        async: true,
-        url: 'https://apis.google.com/js/api.js'
-      }])
-      .then(() => {
-        console.log(gapi);
-        gapi.load();
-        console.log(gapi);
-        // console.log(gapi);
-        // gapi.client.setApiKey(this.config.key);
-        // return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
-        //   .then(function () {
-        //       console.log("GAPI client loaded for API");
-        //     },
-        //     function (err) {
-        //       console.error("Error loading GAPI client for API", err);
-        //     });
+    return loadJS([{
+      url: 'https://apis.google.com/js/api.js'
+    }]).then(() => {
+      console.log('GAPI loaded');
+      // this.isGapiLoaded = true;
+      return new Promise((resolve) => {
+        gapi.load('client', () => {
+          console.log('API key set');
+          gapi.client.setApiKey(this.config.key);
+          resolve(gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
+            .then(() => {
+              console.log('Client loaded');
+              // this.isClientLoaded = true;
+            }));
+        });
       });
-
-    return this;
-  }
-
-  loadCustomSearch() {
-    console.log('Loading: Custom Search');
-    console.log(window.gapi);
-    // console.log(gapi);
-    // console.log(gapi.load.client.load);
-    // return gapi.client.load('https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest')
+    });
   }
 
   fetchResults(q) {
-    return gapi.client.search.cse
-      .list({
-        q,
-        cx: this.config.cx
-      })
-      .then(
-        response => {
-          // Handle the results here (response.result has the parsed body).
-          console.log('Response', response);
-          return response;
-        },
-        err => {
-          console.error('Execute error', err);
-        }
-      );
+    this.init().then(() => {
+      return gapi.client.search.cse
+        .list({
+          q,
+          cx: this.config.cx
+        })
+        .then(
+          response => {
+            // Handle the results here (response.result has the parsed body).
+            console.log('Response', response);
+            return response;
+          },
+          err => {
+            console.error('Execute error', err);
+          }
+        );
+    });
   }
 
 }
