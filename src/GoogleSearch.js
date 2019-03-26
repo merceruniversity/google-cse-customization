@@ -32,16 +32,25 @@
 import loadJS from 'load-js';
 
 class GoogleSearch {
+  // constructor(options) {
+  //   this.config = {
+  //     key: options.key,
+  //     cx: options.cx,
+  //   };
+
+  //   this.isApiLoaded = false;
+  //   this.isClientLoaded = false;
+
+  //   return this;
+  // }
+
   constructor(options) {
     this.config = {
       key: options.key,
       cx: options.cx,
     };
 
-    this.isApiLoaded = false;
-    this.isClientLoaded = false;
-
-    return this
+    return this;
   }
 
   // init() {

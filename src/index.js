@@ -8,5 +8,7 @@ const googleSearch = new GoogleSearch({
   cx: process.env.GAPI_CX
 });
 
-googleSearch.fetchResults('todd').then(result => console.log(result));
-googleSearch.fetchResults('biology').then(result => console.log(result));
+console.log(googleSearch);
+
+// googleSearch.fetchResults('todd').then(result => console.log(result));
+// googleSearch.fetchResults('biology').then(result => console.log(result));
