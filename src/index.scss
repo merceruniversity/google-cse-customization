@@ -13,8 +13,6 @@
   font-size: 18px;
 }
 
-//
-
 .gsc-control-cse {
   // Mathematical constants
   --SQRT2: 1.4142135623730951;
@@ -220,6 +218,13 @@
     color: var(--color-white);
   }
 
+
+  // Divider Between Search and Results =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  .gsc-above-wrapper-area {
+    border-bottom: none;
+  }
+
   // Spelling =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
   .gs-spelling {
@@ -230,7 +235,9 @@
 
   // Search promotions background
   .gsc-result.gsc-promotion {
-    background-color: var(--color-grey-700);
+    // background-color: var(--color-grey-300);
+    // background-color: var(--color-grey-20);
+    background-color: var(--color-grey-80);
 
     // Search promotions title
     div.gs-title,
@@ -243,7 +250,7 @@
 
     a.gs-title,
     a.gs-title * {
-      color: var(--color-white);
+      color: var(--color-black);
       height: auto;
     }
 
@@ -253,7 +260,7 @@
 
     // Search promotions URL
     .gs-visibleUrl {
-      color: var(--color-grey-100);
+      color: var(--color-black);
       font-size: 14px;
       font-style: italic;
       text-transform: lowercase;
@@ -268,18 +275,23 @@
     }
 
     .gs-promotion-image {
-      border: 1px solid var(--color-white);
+      border: 1px solid var(--color-black);
     }
 
     // Search promotions snippet
     .gs-snippet {
-      color: var(--color-grey-20);
+      color: var(--color-black);
       font-size: 18px;
       line-height: 1.2;
     }
   }
 
   // Search Results =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+  // Put more whitespace above & below results
+  .gsc-webResult:not(.gsc-promotion).gsc-result {
+    padding: 20px 0;
+  }
 
   .gsc-result:not(.gsc-promotion) .gs-result {
 
