@@ -288,6 +288,11 @@
 
   // Search Results =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+  // Put more whitespace above all the results
+  .gsc-resultsbox-visible {
+    padding-top: 20px;
+  }
+
   // Put more whitespace above & below results
   .gsc-webResult:not(.gsc-promotion).gsc-result {
     padding: 20px 0;

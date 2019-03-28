@@ -2793,6 +2793,8 @@ b {
       color: var(--color-black);
       font-size: 18px;
       line-height: 1.2; }
+.gsc-control-cse .gsc-resultsbox-visible {
+    padding-top: 20px; }
 .gsc-control-cse .gsc-webResult:not(.gsc-promotion).gsc-result {
     padding: 20px 0; }
 .gsc-control-cse .gsc-result:not(.gsc-promotion) .gs-result div.gs-title,
