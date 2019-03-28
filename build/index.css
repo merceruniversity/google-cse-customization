@@ -2759,8 +2759,7 @@ b {
 .gsc-control-cse .gs-spelling {
     font-size: 24px; }
 .gsc-control-cse .gsc-result.gsc-promotion {
-    background-color: #d5d5d5;
-    background-color: var(--color-grey-80); }
+    background-color: #e2e2e2; }
 .gsc-control-cse .gsc-result.gsc-promotion div.gs-title,
     .gsc-control-cse .gsc-result.gsc-promotion div.gs-title * {
       font-size: 24px;
