@@ -7,10 +7,23 @@
     <title>
       Google Custom Search Engine
     </title>
-  </head>
+  <link href="index.css" rel="stylesheet"></head>
 
   <body>
-    <div class="gcse-search"></div>
+    <script>
+      (function () {
+        var cx = '012607311805140801608:fwi9qoupi10';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+
+    <gcse:search></gcse:search>
+
   <script type="text/javascript" src="index.js"></script></body>
 
 </html>

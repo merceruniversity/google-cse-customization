@@ -1,16 +1,56 @@
-import GoogleSearch from './GoogleSearch';
+import elementReady from 'element-ready';
 
-// console.log(process.env.GAPI_KEY);
-// console.log(process.env.GAPI_CX);
+import './index.scss';
 
-const googleSearch = new GoogleSearch({
-  key: process.env.GAPI_KEY,
-  cx: process.env.GAPI_CX
-});
+const removeAll = coll => coll.forEach(item => item.remove());
 
-googleSearch.fetchResults('todd').then(result => console.log(result));
-googleSearch.fetchResults('biology').then(result => console.log(result));
+const isGcseStyling = node => ('LINK' === node.tagName &&
+    'undefined' !== node.href &&
+    (/\/cse\/static\/element\//i.test(node.href) ||
+      /\/cse\/static\/style\/look\//i.test(node.href))) ||
+  ('STYLE' === node.tagName &&
+    (/\.gsc-control-cse/i.test(node.innerHTML) ||
+      /\.gscb_a/i.test(node.innerHTML)));
 
-setTimeout(() => {
-  googleSearch.fetchResults('chemistry').then(result => console.log(result));
-}, 3000);
+const removeGcseStyleNodesFromCollection = coll => {
+  if (!coll) return;
+  const nodesToRemove = [];
+  for (const node of coll) {
+    // console.log(node);
+    if (isGcseStyling(node)) {
+      nodesToRemove.push(node);
+    }
+  }
+  // console.log(nodesToRemove);
+  removeAll(nodesToRemove);
+}
+
+const gscInputMutationCallback = mutationsList => {
+  for (const mutation of mutationsList) {
+    // console.log(mutation);
+    if ('style' === mutation.attributeName && '' !== mutation.target.getAttribute('style')) {
+      mutation.target.style = '';
+    }
+  }
+}
+const gscInputObserver = new MutationObserver(gscInputMutationCallback);
+
+const gcseCallBack = () => {
+  const headChildren = document.head.children;
+  // console.log([...Array.from(headChildren)]);
+  removeGcseStyleNodesFromCollection(headChildren);
+
+  (async () => {
+    const gscInput = await elementReady('input.gsc-input');
+    // console.log(gscInput);
+    gscInput.setAttribute('placeholder', 'Search');
+    gscInput.setAttribute('style', '');
+    gscInputObserver.observe(gscInput, {
+      attributes: true
+    });
+  })();
+}
+
+window.__gcse = {
+  callback: gcseCallBack
+};

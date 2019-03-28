@@ -3,6 +3,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const Path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const buildDirPath = Path.join(__dirname, '/build');
 
@@ -19,7 +20,12 @@ module.exports = {
   },
 
   plugins: [
+    // Remove various build dirs
     new CleanWebpackPlugin(),
+    // Extract CSS into dedicated file
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
     new Dotenv({
       path: '.env.development'
     }),
@@ -33,7 +39,9 @@ module.exports = {
   module: {
     rules: [{
         test: /\.css$/,
-        use: [{
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
             loader: 'css-loader',
             options: {
               importLoaders: 1
@@ -50,7 +58,9 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        use: [{
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
             loader: 'css-loader',
             options: {
               importLoaders: 1
